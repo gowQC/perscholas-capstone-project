@@ -5,6 +5,10 @@ import FootwarePage from "./pages/FootwarePage";
 import SeasonalPage from "./pages/SeasonalPage";
 import UserPage from "./pages/UserPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import CareersPage from "./pages/CareersPage";
+import PrivacyPage from "./pages/PrivacyPage";
 import { Route, Routes } from "react-router";
 import "./App.css";
 
@@ -19,6 +23,10 @@ function App() {
         <Route path="/seasonal" element={<SeasonalPage />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/careers" element={<CareersPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
       </Routes>
     </>
   );

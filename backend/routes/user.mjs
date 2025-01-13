@@ -4,4 +4,6 @@
 
 import express from "express";
 const router = express.Router();
-import entryController from "../controllers/user.mjs";
+import controller from "../controllers/user.mjs";
+
+export default router;

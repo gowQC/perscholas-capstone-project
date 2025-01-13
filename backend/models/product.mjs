@@ -16,11 +16,6 @@ const productSchema = new mongoose.Schema(
       enum: ["shirts", "pants", "footware", "seasonal"],
       required: true,
     },
-    size: {
-      type: String,
-      enum: ["XS", "S", "M", "L", "XL", "XXL"],
-      required: true,
-    },
     // each size has its own quantity
     XSQuantity: {
       type: Number,
@@ -42,7 +37,7 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    XLLQuantity: {
+    XXLQuantity: {
       type: Number,
       required: true,
     },
@@ -53,10 +48,6 @@ const productSchema = new mongoose.Schema(
     },
     stock: {
       type: Number,
-      required: true,
-    },
-    inStock: {
-      type: String,
       required: true,
     },
     imageUrl: {

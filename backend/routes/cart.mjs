@@ -5,21 +5,21 @@
 
 import express from "express";
 const router = express.Router();
-import entryController from "../controllers/cart.mjs";
+import controller from "../controllers/cart.mjs";
 
 //seed initial data - normally seeded based on user creation
-router.get("/seed", entryController.seed);
+router.get("/seed", controller.seed);
 
 //get items in cart
-router.get("/", entryController.getItems);
+router.get("/", controller.getItems);
 
 //add to cart
-router.post("/", entryController.addToCart);
+router.post("/", controller.addToCart);
 
 //add to cart
-router.put("/", entryController.changeCartItem);
+router.put("/", controller.changeCartItem);
 
 //add to cart
-router.delete("/:id", entryController.removeFromCart);
+router.delete("/:id", controller.removeFromCart);
 
 export default router;

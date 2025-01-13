@@ -1,19 +1,19 @@
-// product routes:
-// GET, PUT
-// - GET is for retrieving, PUT is for updating quantities as users interact with site
-// - POST and DELETE not needed, as on the consumer's end these actions will not be occuring
-
 import express from "express";
 const router = express.Router();
-import entryController from "../controllers/product.mjs";
+import controller from "../controllers/product.mjs";
 
-//seed initial data
-router.get("/seed", entryController.seed);
+// product routes:
+// GET, PUT
+// - GET is for retrieving, PUT is for updating size quantities as users interact with site
+// - POST and DELETE not needed, as on the consumer's end these actions will not be occuring
+
+//seed initial data - FOR DEVELOPMENT PURPOSES ONLY
+router.get("/seed", controller.seed);
 
 //page gets items to display
-router.get("/", entryController.getProducts);
+router.get("/", controller.getProducts);
 
 //user input modifies things like quantity
-router.put("/", entryController.changeProduct);
+// router.put("/", controller.editProduct);
 
 export default router;

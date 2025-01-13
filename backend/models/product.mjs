@@ -19,13 +19,31 @@ const productSchema = new mongoose.Schema(
     size: {
       type: String,
       enum: ["XS", "S", "M", "L", "XL", "XXL"],
-      // each size has its own quantity
-      XSQuantity: Number,
-      SQuantity: Number,
-      MQuantity: Number,
-      LQuantity: Number,
-      XLQuantity: Number,
-      XLLQuantity: Number,
+      required: true,
+    },
+    // each size has its own quantity
+    XSQuantity: {
+      type: Number,
+      required: true,
+    },
+    SQuantity: {
+      type: Number,
+      required: true,
+    },
+    MQuantity: {
+      type: Number,
+      required: true,
+    },
+    LQuantity: {
+      type: Number,
+      required: true,
+    },
+    XLQuantity: {
+      type: Number,
+      required: true,
+    },
+    XLLQuantity: {
+      type: Number,
       required: true,
     },
     price: {
@@ -43,6 +61,10 @@ const productSchema = new mongoose.Schema(
     },
     imageUrl: {
       type: String,
+      required: true,
+    },
+    promoted: {
+      type: Boolean,
       required: true,
     },
   },

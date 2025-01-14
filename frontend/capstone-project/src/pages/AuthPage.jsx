@@ -1,3 +1,6 @@
+import SignUpForm from "../components/SignUpForm";
+import LogInForm from "../components/LogInForm";
+
 export default function UserPage() {
   return (
     <div
@@ -9,10 +12,8 @@ export default function UserPage() {
         justifyContent: "center",
       }}
     >
-      <form style={{ margin: "30px" }} action="">
-        first form
-      </form>
-      <form action="">second form</form>
+      <SignUpForm />
+      <LogInForm />
     </div>
   );
 }

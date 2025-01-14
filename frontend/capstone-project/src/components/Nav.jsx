@@ -22,7 +22,7 @@ export default function Nav() {
           <div>Seasonal</div>
         </Link>
       </ul>
-      <Link to="/user">
+      <Link to="/auth">
         <div>Sign Up or Login</div>
       </Link>
     </nav>

@@ -143,7 +143,6 @@ body {
 /*Featured items carousel CSS*/
 .featuredItems {
   width: calc(100%-15px);
-  background-color: #c4b5b5;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -172,10 +171,24 @@ footer > *:hover {
 
 /*End of footer CSS*/
 
+.productsGrid {
+  width: calc(100%-15px);
+  margin: 15px;
+  border-radius: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 120px;
+  padding: 50px;
+  background: linear-gradient(rgb(255, 116, 117) 0%, rgb(248, 77, 158) 100%);
+}
+
 .productCard {
   display: flex;
   flex-direction: column;
+  text-align: center;
   justify-content: center;
+  align-items: center;
   background-color: rgb(122, 166, 236);
   margin: 10px 0px;
+  border-radius: 25px;
 }

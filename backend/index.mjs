@@ -6,6 +6,7 @@ import db from "./db/conn.mjs";
 import cors from "cors";
 // import routes
 import productRoutes from "./routes/product.mjs";
+import usersRoutes from "./routes/user.mjs";
 
 const PORT = process.env.PORT || 5052;
 
@@ -13,7 +14,7 @@ const app = express();
 
 // use middleware
 app.use(cors()); // enables communication with backend from other sources
-// app.use(logger("dev"));
+app.use(logger("dev"));
 app.use(express.json());
 
 // routes
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 
 // use imported routes
 app.use("/api/products", productRoutes);
+app.use("/api/users", usersRoutes);
 
 app.get("/*", (req, res) => {
   console.log("Unknown route accessed. Redirecting...");

@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { login } from "../utilities/users-services";
 
-export default function LogInForm() {
+export default function LogInForm(props) {
   const [logInFormData, setLogInFormData] = useState({
     email: "",
     password: "",
@@ -15,9 +16,19 @@ export default function LogInForm() {
   };
 
   // form submit functions - will be using util functions for API calls
-  const handleLogInSubmit = (e) => {
+  const handleLogInSubmit = async (e) => {
     e.preventDefault();
+    const credentials = { ...logInFormData };
+    try {
+      // the promise returned by the login service method wil resolve to the user
+      // object included in the payload of the JWT
+      const user = await login(credentials);
+      props.setUser(user);
+    } catch (error) {
+      setLogInError("Log in failed - try again.");
+    }
   };
+
   return (
     <form
       autoComplete="off"
@@ -42,6 +53,8 @@ export default function LogInForm() {
         onChange={handleLogInChange}
         required
       />{" "}
+      <br />
+      <button type="submit">Log In</button>
     </form>
   );
 }

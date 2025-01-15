@@ -1,6 +1,8 @@
 import { useState } from "react";
+// import auth utilities
+import { signUp } from "../utilities/users-services";
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
   const [signUpFormData, setSignUpFormData] = useState({
     fname: "",
     lname: "",
@@ -18,12 +20,15 @@ export default function SignUpForm() {
   };
 
   // form submit function - will be using util functions for API calls
-  const handleSignUpSubmit = (e) => {
+  const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     try {
       const submitData = { ...signUpFormData };
       delete submitData.confirm; // only used for password confirmation purposes - confirm is not actually stored in db
-      console.log(submitData);
+      submitData.creditCard = "00000000000000"; // default value for credit card field
+      submitData.cart = []; // empty array because empty cart on signing up
+      const user = await signUp(submitData);
+      props.setUser(user);
     } catch (error) {
       setSignUpError("Sing up failed - Try again.");
     }
@@ -67,6 +72,7 @@ export default function SignUpForm() {
       <input
         type="password"
         name="password"
+        minLength="4"
         value={signUpFormData.password}
         onChange={handleSignUpChange}
         required
@@ -76,6 +82,7 @@ export default function SignUpForm() {
       <input
         type="password"
         name="confirm"
+        minLength="4"
         value={signUpFormData.confirm}
         onChange={handleSignUpChange}
         required

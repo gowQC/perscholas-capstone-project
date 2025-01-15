@@ -10,19 +10,27 @@ import ContactPage from "./pages/ContactPage";
 import CareersPage from "./pages/CareersPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import { Route, Routes } from "react-router";
+import { useState } from "react";
+import { getUser } from "./utilities/users-services";
 import "./App.css";
 
 function App() {
+  const [user, setUser] = useState(getUser());
+
   return (
+    //user will be passed down to pages that use the Nav component, but the function to set user will be sent to AuthPage
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/shirts" element={<ShirtsPage />} />
-        <Route path="/pants" element={<PantsPage />} />
-        <Route path="/footware" element={<FootwarePage />} />
-        <Route path="/seasonal" element={<SeasonalPage />} />
-        <Route path="/auth" element={<AuthPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/" element={<Home user={user} />} />
+        <Route path="/shirts" element={<ShirtsPage user={user} />} />
+        <Route path="/pants" element={<PantsPage user={user} />} />
+        <Route path="/footware" element={<FootwarePage user={user} />} />
+        <Route path="/seasonal" element={<SeasonalPage user={user} />} />
+        <Route
+          path="/auth"
+          element={<AuthPage user={user} setUser={setUser} />}
+        />
+        <Route path="/checkout" element={<CheckoutPage user={user} />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/careers" element={<CareersPage />} />

@@ -1,10 +1,10 @@
 import Nav from "../components/Nav";
 import ProductDisplay from "../components/ProductDisplay";
 
-export default function FootwarePage() {
+export default function FootwarePage(props) {
   return (
     <>
-      <Nav />
+      <Nav user={props.user} />
       <ProductDisplay category={"footware"} />
     </>
   );

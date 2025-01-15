@@ -1,7 +1,14 @@
 import Logo from "./Logo";
 import { Link } from "react-router";
+import { logOut } from "../utilities/users-services";
 
-export default function Nav() {
+export default function Nav(props) {
+  function handleLogout() {
+    logOut();
+    // update state will also cause a rerender
+    setUser(null);
+  }
+
   return (
     <nav className="navbar">
       <Logo />
@@ -22,9 +29,19 @@ export default function Nav() {
           <div>Seasonal</div>
         </Link>
       </ul>
-      <Link to="/auth">
-        <div>Sign Up or Login</div>
-      </Link>
+      {props.user !== null ? (
+        <div className="greetingsContainer">
+          <div>Hello {props.user.name}!</div>
+          <div>Cart here</div>
+          <Link to="/" onClick={handleLogout}>
+            Sign Out
+          </Link>
+        </div>
+      ) : (
+        <Link to="/auth">
+          <div>Sign Up or Login</div>
+        </Link>
+      )}
     </nav>
   );
 }

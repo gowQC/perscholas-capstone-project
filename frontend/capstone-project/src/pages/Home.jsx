@@ -2,10 +2,10 @@ import Nav from "../components/Nav";
 import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 
-export default function Home() {
+export default function Home(props) {
   return (
     <>
-      <Nav />
+      <Nav user={props.user} />
       <div className="backgroundImageWinter">
         <div>The Hottest Clothes To Keep You Warm</div>
       </div>

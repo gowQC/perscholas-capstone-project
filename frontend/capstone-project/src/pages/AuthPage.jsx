@@ -1,7 +1,7 @@
 import SignUpForm from "../components/SignUpForm";
 import LogInForm from "../components/LogInForm";
 
-export default function UserPage() {
+export default function UserPage(props) {
   return (
     <div
       style={{
@@ -12,8 +12,8 @@ export default function UserPage() {
         justifyContent: "center",
       }}
     >
-      <SignUpForm />
-      <LogInForm />
+      <SignUpForm setUser={props.setUser} />
+      <LogInForm setUser={props.setUser} />
     </div>
   );
 }

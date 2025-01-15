@@ -24,6 +24,7 @@ export default function LogInForm(props) {
       // object included in the payload of the JWT
       const user = await login(credentials);
       props.setUser(user);
+      window.location.href = "http://localhost:5173/";
     } catch (error) {
       setLogInError("Log in failed - try again.");
     }

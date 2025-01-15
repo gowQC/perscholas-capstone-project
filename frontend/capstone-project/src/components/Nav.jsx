@@ -31,7 +31,7 @@ export default function Nav(props) {
       </ul>
       {props.user !== null ? (
         <div className="greetingsContainer">
-          <div>Hello {props.user.name}!</div>
+          <div>Hello {props.user.fname}!</div>
           <div>Cart here</div>
           <Link to="/" onClick={handleLogout}>
             Sign Out

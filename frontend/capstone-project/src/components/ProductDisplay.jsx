@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
-import axios from "axios";
 
-export default function ProductDisplay({ category }) {
+export default function ProductDisplay({ user, category }) {
   const [products, setProducts] = useState([]);
 
   const URL = "http://localhost:5050/api/products/";
@@ -31,7 +30,9 @@ export default function ProductDisplay({ category }) {
           {products.map((product) => {
             if (category === product.category) {
               //checks if passed in category from parent page matches
-              return <ProductCard product={product} key={product._id} />;
+              return (
+                <ProductCard user={user} product={product} key={product._id} />
+              );
             } else {
               return <></>;
             }

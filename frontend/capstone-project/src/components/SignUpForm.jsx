@@ -29,6 +29,7 @@ export default function SignUpForm(props) {
       submitData.cart = []; // empty array because empty cart on signing up
       const user = await signUp(submitData);
       props.setUser(user);
+      window.location.href = "http://localhost:5173/";
     } catch (error) {
       setSignUpError("Sing up failed - Try again.");
     }

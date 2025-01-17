@@ -2,6 +2,7 @@ import User from "../models/user.mjs";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
+// create a new user
 async function create(req, res) {
   try {
     // add user to database
@@ -14,6 +15,7 @@ async function create(req, res) {
   }
 }
 
+// log in an existing user
 async function login(req, res) {
   try {
     // search database for user based on email
@@ -30,7 +32,7 @@ async function login(req, res) {
   }
 }
 
-// helper function
+// helper function for login and create
 function createJWT(user) {
   return jwt.sign(
     // data payload
@@ -40,4 +42,34 @@ function createJWT(user) {
   );
 }
 
-export default { create, login };
+// GET - gets users current cart
+// async function getUserCart() {
+
+// }
+
+// PUT - add to cart (modify existing empty cart)
+async function updateCart(req, res) {
+  try {
+    // the name of the product will be a new/updated field in the cart object
+    const field = req.body.name;
+    delete req.body.name;
+    const foundUser = await User.findById(req.params.id);
+    const newCart = foundUser.cart;
+    // if ("key" in foundUser.cart) {
+    //   delete foundUser.cart["key"]; // gets rid of initialization value if it still exists
+    // }
+    newCart[field] = req.body;
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: req.params.id },
+      { cart: newCart },
+      { new: true }
+    );
+    res
+      .status(200)
+      .send(`Updated cart for user ${updatedUser.fname} ${updatedUser.lname}.`);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+}
+
+export default { create, login, updateCart };

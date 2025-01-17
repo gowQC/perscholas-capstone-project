@@ -32,18 +32,11 @@ const userSchema = new mongoose.Schema(
       minLength: 14,
       maxLength: 19,
     },
-    cart: [
-      {
-        name: { type: String, required: true },
-        XSQuantity: { type: Number, required: true },
-        SQuantity: { type: Number, required: true },
-        MQuantity: { type: Number, required: true },
-        LQuantity: { type: Number, required: true },
-        XLQuantity: { type: Number, required: true },
-        XXLQuantity: { type: Number, required: true },
-        cost: { type: Number, required: true },
-      },
-    ],
+    cart: {
+      // product names will serve as the fields for/be appended to an empty object
+      type: Object,
+      default: {},
+    },
   },
   {
     timestamps: true,

@@ -3,16 +3,16 @@ const router = express.Router();
 import controller from "../controllers/user.mjs";
 
 // get user's active cart
-// router.get("/:id", controller.getUserCart);
+router.get("/:id", controller.getCart);
+
+// modify (add or subtract from) user's cart
+router.put("/:id", controller.updateCart);
 
 // create user
 router.post("/", controller.create);
 
 // login existing user
 router.post("/login", controller.login);
-
-// modify (add or subtract from) user's cart
-router.put("/:id", controller.updateCart);
 
 export default router;
 

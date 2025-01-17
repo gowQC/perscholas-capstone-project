@@ -43,9 +43,15 @@ function createJWT(user) {
 }
 
 // GET - gets users current cart
-// async function getUserCart() {
-
-// }
+async function getCart(req, res) {
+  try {
+    // find user to access their cart + return it
+    const foundUser = await User.findById(req.params.id);
+    res.status(200).json(foundUser.cart);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+}
 
 // PUT - add to cart (modify existing empty cart)
 async function updateCart(req, res) {
@@ -55,9 +61,6 @@ async function updateCart(req, res) {
     delete req.body.name;
     const foundUser = await User.findById(req.params.id);
     const newCart = foundUser.cart;
-    // if ("key" in foundUser.cart) {
-    //   delete foundUser.cart["key"]; // gets rid of initialization value if it still exists
-    // }
     newCart[field] = req.body;
     const updatedUser = await User.findOneAndUpdate(
       { _id: req.params.id },
@@ -72,4 +75,4 @@ async function updateCart(req, res) {
   }
 }
 
-export default { create, login, updateCart };
+export default { create, login, updateCart, getCart };

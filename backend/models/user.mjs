@@ -26,14 +26,23 @@ const userSchema = new mongoose.Schema(
       minLength: 4,
       required: true,
     },
-    creditCard: {
-      type: String,
-      // different credit cards have different lengths
-      minLength: 14,
-      maxLength: 19,
-    },
     cart: {
       // product names will serve as the fields for/be appended to an empty object
+      type: Object,
+      default: {},
+    },
+    addressInfo: {
+      // will contain fields for address, state, city, and zip
+      type: Object,
+      default: {},
+    },
+    paymentInfo: {
+      // will contain fields for cardNumber, holderName, CVV, and expirationDate
+      type: Object,
+      default: {},
+    },
+    order: {
+      // will store successful orders with dates of confirmed orders being the fields, which would point to objects containing cart contents
       type: Object,
       default: {},
     },

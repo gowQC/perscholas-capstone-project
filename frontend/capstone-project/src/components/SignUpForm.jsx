@@ -25,8 +25,7 @@ export default function SignUpForm(props) {
     try {
       const submitData = { ...signUpFormData };
       delete submitData.confirm; // only used for password confirmation purposes - confirm is not actually stored in db
-      submitData.creditCard = "00000000000000"; // default value for credit card field
-      submitData.cart = []; // empty array because empty cart on signing up
+      submitData.creditCard = "00000000000000"; // some default value for credit card field
       const user = await signUp(submitData);
       props.setUser(user);
       window.location.href = "http://localhost:5173/";

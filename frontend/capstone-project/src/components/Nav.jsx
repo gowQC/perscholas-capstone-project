@@ -1,7 +1,6 @@
 import Logo from "./Logo";
 import { Link } from "react-router";
 import { logOut } from "../utilities/users-services";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Nav(props) {
   function handleLogout() {
@@ -12,6 +11,7 @@ export default function Nav(props) {
 
   return (
     <nav className="navbar">
+      {console.log(props.user)}
       <Logo />
       <ul className="navLinks">
         <Link to="/">
@@ -33,7 +33,7 @@ export default function Nav(props) {
       {props.user !== null ? (
         <div className="greetingsContainer">
           <div>Hello</div>
-          <div>{props.user.fname}!</div>
+          <Link to="/profile">{props.user.fname}!</Link>
           <span>
             <Link to="/checkout">
               <i className="fa-solid fa-cart-shopping"></i>

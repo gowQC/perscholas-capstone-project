@@ -4,6 +4,7 @@ import PantsPage from "./pages/PantsPage";
 import FootwarePage from "./pages/FootwarePage";
 import SeasonalPage from "./pages/SeasonalPage";
 import AuthPage from "./pages/AuthPage";
+import UserPage from "./pages/UserPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
@@ -30,6 +31,7 @@ function App() {
           path="/auth"
           element={<AuthPage user={user} setUser={setUser} />}
         />
+        <Route path="/profile" element={<UserPage user={user} />} />
         <Route path="/checkout" element={<CheckoutPage user={user} />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />

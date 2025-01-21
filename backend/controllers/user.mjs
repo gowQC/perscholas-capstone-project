@@ -53,26 +53,94 @@ async function getCart(req, res) {
   }
 }
 
-// PUT - add to cart (modify existing empty cart)
+// PUT - modify existing cart
 async function updateCart(req, res) {
-  try {
-    // the name of the product will be a new/updated field in the cart object
-    const field = req.body.name;
-    delete req.body.name;
-    const foundUser = await User.findById(req.params.id);
-    const newCart = foundUser.cart;
-    newCart[field] = req.body;
-    const updatedUser = await User.findOneAndUpdate(
-      { _id: req.params.id },
-      { cart: newCart },
-      { new: true }
-    );
-    res
-      .status(200)
-      .send(`Updated cart for user ${updatedUser.fname} ${updatedUser.lname}.`);
-  } catch (error) {
-    res.status(400).json(error);
+  // if query param is found, field deletion - remove an item from cart
+  if (req.query.field) {
+    try {
+      const foundUser = await User.findById(req.params.id);
+      const newCart = foundUser.cart;
+      console.log(newCart);
+      delete newCart[req.query.field];
+      console.log(newCart);
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: req.params.id },
+        { cart: newCart },
+        { new: true }
+      );
+      res
+        .status(200)
+        .send(
+          `Removed ${req.query.field} field from user ${updatedUser.fname} ${updatedUser.lname}'s cart.`
+        );
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  } else {
+    // add to cart/update existing product within cart
+    try {
+      // the name of the product will be a new/updated field in the cart object
+      const field = req.body.name;
+      delete req.body.name;
+      const foundUser = await User.findById(req.params.id);
+      const newCart = foundUser.cart;
+      newCart[field] = req.body;
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: req.params.id },
+        { cart: newCart },
+        { new: true }
+      );
+      res
+        .status(200)
+        .send(
+          `Updated cart for user ${updatedUser.fname} ${updatedUser.lname}.`
+        );
+    } catch (error) {
+      res.status(400).json(error);
+    }
   }
 }
 
-export default { create, login, updateCart, getCart };
+// PUT - successful order = empty current cart, establish addressInfo, establish paymentInfo, add new field to orders with cart info
+async function completeOrder(req, res) {
+  try {
+    // console logs
+    // console.log(req.body.addressInfo);
+    // console.log(req.body.paymentInfo);
+    // console.log(req.body.orderedCart);
+
+    const foundUser = await User.findById(req.params.id);
+    // set variables
+    const orderDate = req.body.orderedCart.date; // grab date
+    // retrieve the ordered items + remove date since we're using it as a field, not a piece of data
+    const orderedProducts = req.body.orderedCart;
+    delete orderedProducts.date;
+
+    const updates = {
+      cart: {},
+      addressInfo: req.body.addressInfo,
+      paymentInfo: req.body.paymentInfo,
+      orders: { ...foundUser.orders, [orderDate]: orderedProducts },
+    };
+
+    // update info
+    // console.log(updates);
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: updates },
+      { new: true }
+    );
+    // console.log(User);
+    res
+      .status(200)
+      .send(
+        `Completed order for user ${updatedUser.fname} ${updatedUser.lname}.`
+      );
+  } catch (error) {
+    res.status(400).send("OOps error somewhewre");
+  }
+}
+
+export default { create, login, updateCart, getCart, completeOrder };
+
+// for user ${updatedUser.fname} ${updatedUser.lname}.

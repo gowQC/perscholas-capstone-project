@@ -32,16 +32,16 @@ const userSchema = new mongoose.Schema(
       default: {},
     },
     addressInfo: {
-      // will contain fields for address, state, city, and zip
+      // will contain fields for streetAddress, state, city, and zip
       type: Object,
       default: {},
     },
     paymentInfo: {
-      // will contain fields for cardNumber, holderName, CVV, and expirationDate
+      // will contain fields for cardNumber, cardHolder, cvv, and expirationDate
       type: Object,
       default: {},
     },
-    order: {
+    orders: {
       // will store successful orders with dates of confirmed orders being the fields, which would point to objects containing cart contents
       type: Object,
       default: {},

@@ -319,7 +319,10 @@ export default function CheckoutPage({ user }) {
           </form>
         </>
       ) : user && Object.keys(currentCart).length === 0 ? (
-        <>Your cart is empty!</>
+        <>
+          <div>Your cart is empty!</div>
+          <Link to="/">Home</Link>
+        </>
       ) : (
         <>
           {/*case 3 of 3: no user logged in + cart also defaults to nothing if no found user*/}

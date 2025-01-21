@@ -1,3 +1,10 @@
+import { Link } from "react-router";
+
 export default function CareersPage() {
-  return <>careers</>;
+  return (
+    <>
+      <Link to="/">Home</Link>
+      <div>Careers page under construction</div>
+    </>
+  );
 }

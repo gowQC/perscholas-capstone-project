@@ -1,3 +1,10 @@
+import { Link } from "react-router";
+
 export default function PrivacyPage() {
-  return <>privacy</>;
+  return (
+    <>
+      <Link to="/">Home</Link>
+      <div>Privacy page under construction</div>
+    </>
+  );
 }

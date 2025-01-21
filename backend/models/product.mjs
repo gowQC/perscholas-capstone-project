@@ -63,6 +63,6 @@ const productSchema = new mongoose.Schema(
 );
 
 // indexes
-productSchema.index({ category: 1 });
+productSchema.index({ category: 1, promoted: 1 });
 
 export default mongoose.model("Product", productSchema);

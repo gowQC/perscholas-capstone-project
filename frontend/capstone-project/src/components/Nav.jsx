@@ -1,6 +1,7 @@
 import Logo from "./Logo";
 import { Link } from "react-router";
 import { logOut } from "../utilities/users-services";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Nav(props) {
   function handleLogout() {
@@ -31,10 +32,15 @@ export default function Nav(props) {
       </ul>
       {props.user !== null ? (
         <div className="greetingsContainer">
-          <div>Hello {props.user.fname}!</div>
-          <div>Cart here</div>
+          <div>Hello</div>
+          <div>{props.user.fname}!</div>
+          <span>
+            <Link to="/checkout">
+              <i className="fa-solid fa-cart-shopping"></i>
+            </Link>
+          </span>
           <Link to="/" onClick={handleLogout}>
-            Sign Out
+            <div>Sign Out</div>
           </Link>
         </div>
       ) : (

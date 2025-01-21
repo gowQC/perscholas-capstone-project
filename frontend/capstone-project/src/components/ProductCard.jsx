@@ -51,6 +51,7 @@ export default function ProductCard({ user, product }) {
       order.XXLQuantity;
     const cost = product.price * quantity;
     orderData.cost = cost.toFixed(2); // initialize cost field with number that has 2 decimal places
+    orderData.imageUrl = product.imageUrl; // carry over url for image to be displayed at checkout
     console.log(orderData); // has all order info
     // send orderData to db
     try {

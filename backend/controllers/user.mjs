@@ -141,6 +141,23 @@ async function completeOrder(req, res) {
   }
 }
 
-export default { create, login, updateCart, getCart, completeOrder };
+// DELETE - removes user from the database completely
+async function deleteUser(req, res) {
+  try {
+    const foundUser = await User.findByIdAndDelete(req.params.id);
+    res.status(200).send("Deleted user successfully.");
+  } catch (error) {
+    res.status(400).json(error);
+  }
+}
+
+export default {
+  create,
+  login,
+  updateCart,
+  getCart,
+  completeOrder,
+  deleteUser,
+};
 
 // for user ${updatedUser.fname} ${updatedUser.lname}.

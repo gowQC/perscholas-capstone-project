@@ -11,6 +11,9 @@ router.get("/:id", controller.getCart);
 // modify (add or subtract from) user's cart
 router.put("/:id", controller.updateCart);
 
+// delete an existing user from db
+router.delete("/:id", controller.deleteUser);
+
 // login existing user
 router.post("/login", controller.login);
 

@@ -309,7 +309,9 @@ export default function CheckoutPage({ user }) {
                 );
               })}
             </div>
-            <div style={{ textAlign: "center" }}>Total Price: ${total}</div>
+            <div style={{ textAlign: "center" }}>
+              Total Price: ${total.toFixed(2)}
+            </div>
             <br />
             <input
               type="submit"

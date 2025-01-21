@@ -5,7 +5,7 @@ export default function FootwarePage(props) {
   return (
     <>
       <Nav user={props.user} />
-      <ProductDisplay category={"footware"} />
+      <ProductDisplay user={props.user} category={"footware"} />
     </>
   );
 }

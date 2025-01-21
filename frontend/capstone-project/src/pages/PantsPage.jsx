@@ -5,7 +5,7 @@ export default function PantsPage(props) {
   return (
     <>
       <Nav user={props.user} />
-      <ProductDisplay category={"pants"} />
+      <ProductDisplay user={props.user} category={"pants"} />
     </>
   );
 }

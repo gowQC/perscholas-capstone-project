@@ -5,7 +5,7 @@ export default function SeasonalPage(props) {
   return (
     <>
       <Nav user={props.user} />
-      <ProductDisplay category={"seasonal"} />
+      <ProductDisplay user={props.user} category={"seasonal"} />
     </>
   );
 }

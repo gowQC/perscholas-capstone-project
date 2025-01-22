@@ -55,18 +55,33 @@ User documents contain the following data:
 - a string representing a user's last name
 - a string representing a user's email address
 - a string representing a user's password
-- a cart field that will contain an object that uses product names as keys, which will have object values that contain the values of the ordered sizes
-  - cart : {
-    item1: {
-    small: 1
-    large: 2
-    }
-    item2 {
-    medium: 1
-    }
-    }
-- an address info field
-- a payment info field
-- an orders field
+- a cart field that has the value of an object that stores the number of sizes ordered for each individual product
+- an address info field that has the value of an object that stores data relating to the user's home address information
+- a payment info field that has the value of an object that stores data relating to the user's payment information
+- an orders field that has the value of an object that uses dates as keys, which are paired with the items ordered from the cart object
 
-### routes, controllers
+### Routes
+
+The following routes can be used to perform certain HTTP actions in the backend:
+
+- http://localhost:5050/api/products/
+
+  - GET method retrieves all of the product documents found in the database
+
+- http://localhost:5050/api/users/
+
+  - POST method allows for the user to create an account and save it to the database with an encrypted password
+
+- http://localhost:5050/api/users/login
+
+  - POST method allows for the user to log into an already existing account from the database using both an email and password
+
+- http://localhost:5050/api/users/:id
+
+  - GET method allows for a user to retrieve the current contents of their cart
+  - PUT method allows the user to modify the contents of the cart field
+  - DELETE method allows for the user to delete their entire account
+
+- http://localhost:5050/api/users/ORDER/:id
+
+  - PUT method allows for a user to clear the cart field while also appending data to their addressInfo, paymentInfo, and orders fields

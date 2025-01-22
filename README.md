@@ -38,9 +38,35 @@ This file hosts a standard Express server that is hosted locally on port 5052 wh
 
 ### Models
 
-Product documents contain:
+Product documents contain the following data:
 
-    - test
-    - 1
+- a string representing the name of the product
+- a string representing the description of the product
+- a string representing the category of the product, which can be only 1 of 4 choices from "shirts", "pants", "footware", and "seasonal"
+- 6 different number fields, each representing a size from "XS", "S", "M", "L", "XL", "XXL"
+- a number representing the total stock of all sizes combined
+- a number representing the product's price
+- a string containing the image URL
+- a boolean representing if an item is being promoted or not
+
+User documents contain the following data:
+
+- a string representing a user's first name
+- a string representing a user's last name
+- a string representing a user's email address
+- a string representing a user's password
+- a cart field that will contain an object that uses product names as keys, which will have object values that contain the values of the ordered sizes
+  - cart : {
+    item1: {
+    small: 1
+    large: 2
+    }
+    item2 {
+    medium: 1
+    }
+    }
+- an address info field
+- a payment info field
+- an orders field
 
 ### routes, controllers

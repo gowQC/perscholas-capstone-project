@@ -26,7 +26,7 @@ When a user is satisfied with the items they've added to their cart, they can en
 
 More implementations will be made here at some point, but for now the user is capable of deleting their account. It's a simple click of the button that prompts users if they're sure they wish to proceed. If confirmed, the user's account will be terminated.
 
-## Miscellaneous Pages
+### Miscellaneous Pages
 
 There are also extra pages found in the footer of the home page linking to pages for "About Us", "Contact", "Careers", and "Privacy Notice." These pages are still under development, but they don't serve any purpose to the functionality of this project, as they are only there for aesthetic purposes only.
 

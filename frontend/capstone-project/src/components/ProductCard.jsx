@@ -55,7 +55,10 @@ export default function ProductCard({ user, product }) {
     console.log(orderData); // has all order info
     // send orderData to db
     try {
-      await axios.put(`http://localhost:5050/api/users/${user._id}`, orderData);
+      await axios.put(
+        `https://perscholas-capstone-project-backend.onrender.com/api/users/${user._id}`,
+        orderData
+      );
     } catch (error) {
       console.log(error);
     } finally {

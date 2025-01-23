@@ -4,7 +4,8 @@ import ProductCard from "../components/ProductCard";
 export default function ProductDisplay({ user, category }) {
   const [products, setProducts] = useState([]);
 
-  const URL = "http://localhost:5050/api/products/";
+  const URL =
+    "https://perscholas-capstone-project-backend.onrender.com/api/products/";
 
   const getProducts = async () => {
     try {

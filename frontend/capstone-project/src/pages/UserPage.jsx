@@ -2,7 +2,7 @@ import Nav from "../components/Nav";
 import axios from "axios";
 
 export default function UserPage({ user }) {
-  const URL = `http://localhost:5050/api/users/${user._id}`;
+  const URL = `https://perscholas-capstone-project-backend.onrender.com/api/users/${user._id}`;
 
   const handleClick = async () => {
     if (confirm("Delete your profile?")) {

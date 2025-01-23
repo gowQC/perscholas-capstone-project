@@ -1,5 +1,5 @@
 // base url for the route
-const LOCAL_URL = "http://localhost:5050";
+const LOCAL_URL = "https://perscholas-capstone-project-backend.onrender.com";
 const END_POINT = "/api/users";
 const URL = LOCAL_URL + END_POINT;
 

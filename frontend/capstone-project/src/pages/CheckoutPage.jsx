@@ -27,7 +27,7 @@ export default function CheckoutPage({ user }) {
   // const [total, setTotal] = useState(0);
   let total = 0;
 
-  const URL = `http://localhost:5050/api/users/${user._id}`;
+  const URL = `https://perscholas-capstone-project-backend.onrender.com/api/users/${user._id}`;
 
   const getActiveCart = async () => {
     try {
@@ -70,7 +70,7 @@ export default function CheckoutPage({ user }) {
     // PUT data to user document
     try {
       await axios.put(
-        `http://localhost:5050/api/users/ORDER/${user._id}`,
+        `https://perscholas-capstone-project-backend.onrender.com/api/users/ORDER/${user._id}`,
         payload
       );
       alert("Order placed! Thank you for shopping with us!");

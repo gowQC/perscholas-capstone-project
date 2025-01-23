@@ -6,7 +6,8 @@ import { useState, useEffect } from "react";
 export default function Home(props) {
   const [products, setProducts] = useState([]);
 
-  const URL = "http://localhost:5050/api/products/";
+  const URL =
+    "https://perscholas-capstone-project-backend.onrender.com/api/products/";
 
   const getProducts = async () => {
     try {
@@ -48,7 +49,7 @@ export default function Home(props) {
             })}
           </>
         ) : (
-          <>No search results found...</>
+          <>Loading search results...</>
         )}
       </div>
       <Footer />

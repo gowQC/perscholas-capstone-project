@@ -74,7 +74,9 @@ export default function CheckoutPage({ user }) {
         payload
       );
       alert("Order placed! Thank you for shopping with us!");
-      window.location.href = "http://localhost:5173/";
+      window.location.href =
+        "https://glowing-sunflower-61048c.netlify.app/" ||
+        "http://localhost:5173/";
     } catch (error) {
       console.error(error);
     }

@@ -28,7 +28,9 @@ export default function SignUpForm(props) {
       submitData.creditCard = "00000000000000"; // some default value for credit card field
       const user = await signUp(submitData);
       props.setUser(user);
-      window.location.href = "http://localhost:5173/";
+      window.location.href =
+        "https://glowing-sunflower-61048c.netlify.app/" ||
+        "http://localhost:5173/";
     } catch (error) {
       setSignUpError("Sing up failed - Try again.");
     }

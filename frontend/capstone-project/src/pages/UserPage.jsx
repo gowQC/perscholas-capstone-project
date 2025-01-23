@@ -9,7 +9,9 @@ export default function UserPage({ user }) {
       await axios.delete(URL);
       localStorage.removeItem("token");
       alert("Deleted!");
-      window.location.href = "http://localhost:5173/";
+      window.location.href =
+        "https://glowing-sunflower-61048c.netlify.app/" ||
+        "http://localhost:5173/";
     }
   };
 
